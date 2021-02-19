@@ -170,10 +170,6 @@ $grid-enter-duration: 400ms;
   }
 }
 
-.blurred {
-  filter: blur(5px);
-}
-
 @keyframes color-in {
   from {
     filter: grayscale(1);

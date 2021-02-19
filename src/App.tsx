@@ -32,7 +32,7 @@ function App() {
   return (
     <>
       <Navbar changeSection={changeScreen} exitRef={exitRef} />
-      <Info />
+      <Info exitRef={exitRef} />
       <Screen section={section} />
     </>
   );

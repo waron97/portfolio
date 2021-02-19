@@ -11,9 +11,20 @@
 
   background-color: rgb(114, 114, 114);
   color: white;
+
+  .exit-floater {
+    position: absolute;
+    right: 3%;
+    top: 5%;
+    fill: white;
+  }
+
   h1 {
     text-align: center;
     font-size: 25px;
+  }
+  a {
+    color: orange;
   }
 }
 
