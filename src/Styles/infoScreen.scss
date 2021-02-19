@@ -1,0 +1,40 @@
+.info-window {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 50vw;
+  transform: translate(-50%, -50%);
+  padding: 1rem;
+  border: 5px solid white;
+  border-radius: 10px;
+  z-index: 100;
+
+  background-color: rgb(114, 114, 114);
+  color: white;
+  h1 {
+    text-align: center;
+    font-size: 25px;
+  }
+}
+
+.info-floater {
+  position: absolute;
+  right: 2%;
+  fill: white;
+  $dims: 50px;
+  width: 10vh;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    cursor: pointer;
+    width: 60%;
+    height: 60%;
+    transition: fill 300ms ease-in-out;
+
+    &:hover {
+      fill: orange;
+    }
+  }
+}

@@ -1,0 +1,304 @@
+@import "./screen-base";
+@import url("https://fonts.googleapis.com/css2?family=Anonymous+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arvo:ital@1&display=swap");
+
+// Animation timing declarations
+
+//  first stage
+$logo-enter-delay: 0s;
+$logo-animation-duration: 600ms;
+$bar-enter-delay: $logo-animation-duration;
+$bar-animation-duration: 300ms;
+
+//  second stage
+$logo-border-entrance-delay: $logo-animation-duration -
+  ($logo-animation-duration * 0.4);
+$logo-border-animation-duration: 800ms;
+$text-enter-base-delay: $bar-enter-delay + $bar-animation-duration;
+$text-enter-sequential-delay: 200ms;
+$text-animation-duration: 300ms;
+
+//  Third stage
+$edu-pointer-enter-delay: $text-enter-base-delay +
+  ($text-enter-sequential-delay * 5);
+$edu-pointer-duration: 300ms;
+
+// Styling
+
+.homeScreen {
+  @extend %screen-parent;
+
+  overflow: hidden;
+  //   padding-top: 25px;
+}
+
+.column {
+  width: 100%;
+  height: 85%;
+  justify-content: space-around;
+  align-items: center;
+
+  .motto {
+    // margin-top: -6%;
+    margin-bottom: 5px;
+    width: 60%;
+    // font-weight: bold;
+    text-align: center;
+    font-family: "Arvo", serif;
+    font-size: 16px;
+    opacity: 0;
+    animation: simple-opacity-fadein $text-animation-duration
+      $text-enter-base-delay forwards ease-in;
+  }
+}
+
+.upper {
+  height: 50%;
+  max-width: 80vw;
+  //   padding-bottom: 70px;
+  //   min-height: 400px;
+}
+
+.logo {
+  position: relative;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //   padding: 1em;
+
+  .border {
+    transform: scale(0.9);
+    opacity: 0;
+    $border-size: 104%;
+    position: absolute;
+    width: $border-size;
+    height: $border-size;
+    background-color: orange;
+    border-radius: 50%;
+    animation: logo-border-fadein $logo-border-animation-duration linear
+      $logo-border-entrance-delay forwards;
+  }
+
+  img {
+    // position: absolute;
+    width: 100%;
+    height: 100%;
+    transform: scale(0);
+    border: 0px solid white;
+    border-radius: 500px;
+    animation-name: logo-fadein;
+    animation-duration: $logo-animation-duration;
+    animation-delay: $logo-enter-delay;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
+.bio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+
+  .column {
+    justify-content: space-evenly;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  span {
+    display: block;
+    position: relative;
+    opacity: 0;
+    left: 100px;
+    // padding-top: 20px;
+
+    b {
+      color: orange;
+    }
+  }
+
+  @for $i from 1 through 6 {
+    span:nth-child(#{$i}) {
+      animation-name: text-fadein;
+      animation-duration: $text-animation-duration;
+      animation-delay: $text-enter-base-delay +
+        (($i - 1) * ($text-enter-sequential-delay));
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+  }
+
+  &::before {
+    content: "";
+    display: block;
+    position: relative;
+    left: -30px;
+    background-color: orange;
+    width: 5px;
+    height: 0%;
+    animation-name: bar-fadein;
+    animation-duration: $bar-animation-duration;
+    animation-delay: $bar-enter-delay;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+  }
+}
+
+.pointer-down {
+  top: 90%;
+  left: 50%;
+}
+
+.pointer-up {
+  top: 15vh;
+  left: 50%;
+}
+
+.edu-pointer {
+  $clr: rgb(190, 190, 190);
+  position: absolute;
+  // height: 50px;
+
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $clr;
+
+  span {
+    font-size: 16px;
+    margin-bottom: -0.4em;
+  }
+
+  svg {
+    $dims: 45px;
+    width: $dims;
+    height: $dims;
+    fill: $clr;
+    animation: flicker 1s 0s linear infinite alternate-reverse;
+
+    // background-color: white;
+  }
+}
+
+.animation-wrapper {
+  position: absolute;
+  opacity: 0;
+  top: 110%;
+  animation-name: pointer-fadein;
+  animation-duration: $edu-pointer-duration;
+  animation-delay: $edu-pointer-enter-delay;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.animation-wrapper-top {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  animation-name: pointer-fadein-top;
+  animation-duration: $edu-pointer-duration;
+  animation-delay: $edu-pointer-enter-delay;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.exit-fadetotop {
+  position: relative;
+  animation: fadetotop 500ms 0ms ease-out forwards;
+}
+
+.exit-fadetobot {
+  position: relative;
+  animation: fadetobot 500ms 0ms ease-out forwards;
+}
+
+// Second Part timings
+
+$list-point-enter-delay: 0s;
+$list-point-duration: 350ms;
+$list-point-seq-delay: 250ms;
+
+$second-text-base-delay: $list-point-enter-delay + ($list-point-seq-delay * 3);
+$second-text-seq-delay: 200ms;
+$second-text-duration: 200ms;
+
+@for $i from 1 through 3 {
+  .formation-list-item:nth-child(#{$i}) {
+    .list-point-image {
+      animation-name: text-fadein-fromleft;
+      animation-delay: $list-point-seq-delay * $i;
+      animation-duration: $list-point-duration;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+    .text {
+      position: relative;
+      animation-name: text-fadein;
+      animation-delay: $second-text-base-delay + ($second-text-seq-delay * $i);
+      animation-duration: $list-point-duration;
+      animation-timing-function: ease-in;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+.formation-list {
+  z-index: 5;
+  width: auto;
+  height: 40vh;
+  align-items: flex-start;
+  justify-content: space-around;
+
+  .list-point-image {
+    position: relative;
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    margin-right: 30px;
+    border-radius: 50%;
+    border: 5px solid orange;
+    background-color: white;
+    z-index: 100;
+  }
+
+  .formation-list-item {
+    span {
+      display: block;
+    }
+    .time,
+    .place {
+      color: rgb(201, 201, 201);
+    }
+    .text {
+      opacity: 0;
+    }
+  }
+}
+
+.attempt {
+  background-color: transparent;
+  position: absolute;
+  width: 50px;
+  height: 30%;
+
+  // display: none;
+}
+
+.attempt::after {
+  content: "";
+  display: block;
+  position: relative;
+  height: 100%;
+  width: 5px;
+  background-color: orange;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}

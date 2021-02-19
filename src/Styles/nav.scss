@@ -1,0 +1,86 @@
+$nav-base-delay: 500ms;
+$nav-seq-delay: 300ms;
+$nav-duration: 400ms;
+$nav-bar-delay: $nav-base-delay + ($nav-seq-delay * 3);
+
+.pos1::after {
+  left: 0%;
+}
+
+.pos2::after {
+  left: 33.33%;
+}
+
+.pos3::after {
+  left: 66.66%;
+}
+
+.navbar {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  height: 10vh;
+  width: 40%;
+  align-self: center;
+  background-color: transparent;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &::after {
+    content: "";
+    // align-self: flex-start;
+    position: absolute;
+    top: 60px;
+    display: block;
+    width: 0%;
+    // left: 66.66%;
+    background-color: orange;
+    height: 2px;
+    transition: left 200ms ease-in-out;
+    animation-name: nav-after-fadein;
+    animation-delay: $nav-bar-delay;
+    animation-duration: $nav-duration;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+}
+
+.navbar-nav {
+  width: 100%;
+  div {
+    transform: rotateX(90deg);
+    cursor: pointer;
+    width: 33.33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@for $i from 1 through 3 {
+  .navbar-nav div:nth-child(#{$i}) {
+    animation-name: nav-tab-fadein;
+    animation-duration: $nav-duration;
+    animation-delay: $nav-base-delay + (($nav-seq-delay) * ($i - 1));
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes nav-after-fadein {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 33%;
+  }
+}
+
+@keyframes nav-tab-fadein {
+  from {
+    transform: rotateX(90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+  }
+}

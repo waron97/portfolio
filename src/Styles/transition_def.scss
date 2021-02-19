@@ -1,0 +1,214 @@
+$base_left_offset: 0px;
+$panel_enter_duration: 1s;
+$panel_enter_delay: 200ms;
+
+@keyframes enter {
+  0% {
+    top: 200vh;
+  }
+  100% {
+    top: -200px;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    // opacity: 1;
+    margin-left: 0px;
+  }
+  to {
+    margin-left: 110vw;
+  }
+}
+
+.panel-wrapper {
+  position: absolute;
+  animation-name: fade-out;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: ($panel_enter_delay * 6) + $panel_enter_duration;
+  animation-fill-mode: forwards;
+}
+
+.transition-part {
+  width: 40vw;
+  height: 200vh;
+  //   transform: rotate(10deg);
+  background-color: blue;
+  position: absolute;
+  top: 200vh;
+}
+
+@for $i from 1 through 6 {
+  .transition-screen-#{$i} {
+    background-color: lighten($color: blue, $amount: $i * 5%);
+    left: $base_left_offset + (($i - 1) * 250px);
+    animation-name: enter;
+    animation-duration: $panel_enter_duration;
+    animation-delay: $panel_enter_delay * ($i - 1);
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes fadetotop {
+  from {
+    opacity: 1;
+    bottom: 0;
+  }
+  to {
+    opacity: 0;
+    bottom: 100px;
+  }
+}
+@keyframes fadetobot {
+  from {
+    opacity: 1;
+    bottom: 0px;
+  }
+  to {
+    opacity: 0;
+    bottom: -100px;
+  }
+}
+
+// Animation declarations
+
+@keyframes pointer-fadein {
+  from {
+    top: 93%;
+    opacity: 0;
+  }
+  to {
+    top: 89%;
+    opacity: 1;
+  }
+}
+
+@keyframes pointer-fadein-top {
+  from {
+    top: -5vh;
+    opacity: 0;
+  }
+  to {
+    top: 0vh;
+    opacity: 1;
+  }
+}
+
+@keyframes text-fadein {
+  from {
+    left: 100px;
+    opacity: 0;
+  }
+  to {
+    left: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes text-fadein-fromleft {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+  to {
+    left: 0px;
+    opacity: 1;
+  }
+}
+@keyframes text-fadein-frombot {
+  from {
+    bottom: -100px;
+    opacity: 0;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+@keyframes bar-fadein {
+  from {
+    height: 0%;
+  }
+
+  to {
+    height: 100%;
+  }
+}
+
+@keyframes logo-fadein {
+  0% {
+    // opacity: 0;
+    transform: scale(0);
+    border-width: 0px;
+  }
+  70% {
+    // opacity: 1;
+    transform: scale(1);
+    border-width: 0px;
+  }
+
+  100% {
+    // opacity: 1;
+    transform: scale(1);
+    border-width: 0px;
+  }
+}
+
+@keyframes logo-border-fadein {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  //   50% {
+  //     transform: scale(1);
+  //   }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes flicker {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Projects
+
+@keyframes proj-pointer-fadein {
+  from {
+    top: 110%;
+    opacity: 0;
+  }
+  to {
+    top: 92%;
+    opacity: 1;
+  }
+}
+
+@keyframes proj-pointer-fadein-top {
+  from {
+    top: -5vh;
+    opacity: 0;
+  }
+  to {
+    top: -1vh;
+    opacity: 1;
+  }
+}
+
+@keyframes simple-opacity-fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

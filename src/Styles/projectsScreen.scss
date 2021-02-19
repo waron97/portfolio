@@ -1,0 +1,200 @@
+@import "./screen-base";
+
+// Timing
+$point-delay: 0s;
+$point-duration: 300ms;
+$points-seq-delay: 200ms;
+
+$text-duration: 350ms;
+$text-base-delay: ($point-duration) + ($points-seq-delay) + $point-delay;
+$text-seq-delay: 200ms;
+$text-parts-delay: 200ms;
+
+$title-1-delay: $text-base-delay;
+$subtitle-1-delay: + $title-1-delay + $text-seq-delay;
+$desc-1-delay: $subtitle-1-delay + $text-seq-delay;
+
+$title-2-delay: $desc-1-delay + $text-parts-delay;
+$subtitle-2-delay: + $title-2-delay + $text-seq-delay;
+$desc-2-delay: $subtitle-2-delay + $text-seq-delay;
+
+$dims: 180px;
+.projects {
+  @extend %screen-parent;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: 90%;
+  align-items: center;
+  justify-content: space-around;
+  $padding: 2rem;
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@for $i from 1 through 2 {
+  .projects-list-item:nth-child(#{$i}) .projects-image {
+    animation-name: text-fadein-fromleft;
+    animation-duration: 500ms;
+    animation-delay: 200ms * ($i - 1);
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+  }
+}
+
+.projects-list-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+
+  .text {
+    width: 75%;
+  }
+
+  .projects-image {
+    opacity: 0;
+    left: -100px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 3em;
+    $dims: 180px;
+    width: $dims;
+    height: $dims;
+    background-color: white;
+    border-radius: 50%;
+    border: 5px solid orange;
+
+    span {
+      color: black;
+      font-weight: bold;
+    }
+  }
+  .projects-image-clickable {
+    overflow: hidden;
+    border-color: white;
+    cursor: pointer;
+    img {
+      width: 100%;
+      transition: transform 200ms ease-in-out, filter 200ms ease-in-out;
+      transform: scale(1);
+      filter: grayscale(0.3);
+      &:hover {
+        transform: scale(1.2);
+        filter: grayscale(0);
+      }
+    }
+  }
+}
+
+.projects-list-item:first-child {
+  .text {
+    h3 {
+      position: relative;
+      opacity: 0;
+      animation: text-fadein-frombot $text-duration $title-1-delay forwards
+        ease-in;
+    }
+    p:first-of-type {
+      position: relative;
+      opacity: 0;
+      animation: text-fadein-frombot $text-duration $subtitle-1-delay forwards
+        ease-in;
+    }
+    p:last-child {
+      position: relative;
+      opacity: 0;
+      animation: text-fadein $text-duration $desc-1-delay forwards ease-in;
+    }
+  }
+}
+
+.projects-list-item:nth-child(2) {
+  .text {
+    h3 {
+      position: relative;
+      opacity: 0;
+      animation: text-fadein-frombot $text-duration $title-2-delay forwards
+        ease-in;
+    }
+    p:first-of-type {
+      position: relative;
+      opacity: 0;
+      animation: text-fadein-frombot $text-duration $subtitle-2-delay forwards
+        ease-in;
+    }
+    p:last-child {
+      position: relative;
+      opacity: 0;
+      animation: text-fadein $text-duration $desc-2-delay forwards ease-in;
+    }
+  }
+}
+
+.proj-animation-wrapper {
+  position: absolute;
+  opacity: 0;
+  top: 110%;
+  animation-name: proj-pointer-fadein;
+  animation-duration: 200ms;
+  animation-delay: 300ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.proj-animation-wrapper-top {
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  animation-name: proj-pointer-fadein-top;
+  animation-duration: 200ms;
+  animation-delay: 300ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+.proj-edu-pointer {
+  $clr: rgb(190, 190, 190);
+  position: absolute;
+  // height: 50px;
+
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: $clr;
+
+  span {
+    font-size: 16px;
+    margin-bottom: -0.4em;
+  }
+
+  svg {
+    $dims: 45px;
+    width: $dims;
+    height: $dims;
+    fill: $clr;
+    animation: flicker 1s 0s linear infinite alternate-reverse;
+
+    // background-color: white;
+  }
+}
+
+.proj-pointer-down {
+  left: 50%;
+  top: 93%;
+}
+
+.proj-pointer-up {
+  top: 13vh;
+  left: 50%;
+}
