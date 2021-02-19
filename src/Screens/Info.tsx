@@ -41,7 +41,7 @@ function Info(props: Props) {
       </div>
       <h1>Note su questo portfolio</h1>
       <p>
-        Non ho utilizzato nessuna librerio o pacchetto esterno, eccezion fatta
+        Non ho utilizzato nessuna libreria o pacchetto esterno, eccezion fatta
         per React, Webpack e SASS.
       </p>
       <p>
