@@ -2,6 +2,7 @@ import React, {
   createContext,
   RefObject,
   useContext,
+  useEffect,
   useRef,
   useState,
 } from "react";
@@ -117,6 +118,26 @@ function Projects(props: Props) {
   const [imageView, setImageView] = useState<JSX.Element | null | undefined>(
     null
   );
+
+  useEffect(() => {
+    window.addEventListener("wheel", handleScroll);
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [firstPartOn]);
+
+  const handleScroll = (e: WheelEvent) => {
+    if (firstPartOn) {
+      if (e.deltaY > 0) {
+        // scrolling up while first part is on
+        changeDisplay();
+      }
+    } else {
+      if (!(e.deltaY > 0)) {
+        changeDisplay();
+      }
+    }
+  };
 
   const changeDisplay = () => {
     const clToAdd = firstPartOn ? "exit-fadetotop" : "exit-fadetobot";

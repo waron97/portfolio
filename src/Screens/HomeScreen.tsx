@@ -17,21 +17,23 @@ interface PartProps extends Props {
 
 function FirstPart(props: PartProps) {
   useEffect(() => {
-    const handleScroll = () => {
-      props.changer(
-        <SecondPart
-          changer={props.changer}
-          exitRef={props.exitRef}
-          animationRef={props.animationRef}
-          navRef={props.navRef}
-        />,
-        true
-      );
+    const handleScroll = (e: WheelEvent) => {
+      if (e.deltaY > 0) {
+        props.changer(
+          <SecondPart
+            changer={props.changer}
+            exitRef={props.exitRef}
+            animationRef={props.animationRef}
+            navRef={props.navRef}
+          />,
+          true
+        );
+      }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleScroll);
     };
   }, [props]);
 
@@ -97,7 +99,8 @@ function FirstPart(props: PartProps) {
 
 function SecondPart(props: PartProps) {
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = (e: WheelEvent) => {
+      if (e.deltaY > 0) return;
       props.changer(
         <FirstPart
           navRef={props.navRef}
@@ -109,9 +112,9 @@ function SecondPart(props: PartProps) {
       );
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("wheel", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", handleScroll);
     };
   }, [props]);
   return (
