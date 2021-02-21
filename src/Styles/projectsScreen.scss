@@ -21,6 +21,11 @@ $desc-2-delay: $subtitle-2-delay + $text-seq-delay;
 $dims: 180px;
 .projects {
   @extend %screen-parent;
+  @media only screen and (max-width: 768px) {
+    overflow: auto !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
 }
 
 .projects-list {
@@ -33,6 +38,10 @@ $dims: 180px;
   $padding: 2rem;
   padding-top: $padding;
   padding-bottom: $padding;
+
+  @media only screen and (max-width: 768px) {
+    padding-top: 50px;
+  }
 }
 
 @for $i from 1 through 2 {
@@ -52,8 +61,17 @@ $dims: 180px;
   align-items: center;
   justify-content: flex-start;
 
+  @media only screen and (max-width: 768px) {
+    flex-direction: column;
+    margin-bottom: 25px;
+  }
+
   .text {
     width: 75%;
+    @media only screen and (max-width: 768px) {
+      width: 95%;
+      text-align: center;
+    }
   }
 
   .projects-image {
@@ -71,6 +89,10 @@ $dims: 180px;
     background-color: white;
     border-radius: 50%;
     border: 5px solid orange;
+
+    @media only screen and (max-width: 768px) {
+      margin-right: 0em;
+    }
 
     span {
       color: black;
@@ -173,6 +195,10 @@ $dims: 180px;
   cursor: pointer;
   color: $clr;
 
+  @media only screen and (max-width: 768px) {
+    z-index: 500;
+  }
+
   span {
     font-size: 16px;
     margin-bottom: -0.4em;
@@ -192,9 +218,18 @@ $dims: 180px;
 .proj-pointer-down {
   left: 50%;
   top: 93%;
+
+  @media only screen and (max-width: 768px) {
+    left: 50vw;
+  }
 }
 
 .proj-pointer-up {
   top: 13vh;
   left: 50%;
+
+  @media only screen and (max-width: 768px) {
+    top: 12vh;
+    left: 50vw;
+  }
 }

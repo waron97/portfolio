@@ -16,6 +16,10 @@ $grid-enter-duration: 400ms;
   @extend %screen-parent;
   align-items: center;
   justify-content: center;
+  @media only screen and (max-width: 768px) {
+    justify-content: center;
+    align-items: flex-start;
+  }
 }
 
 .toolkit-grid {
@@ -33,9 +37,31 @@ $grid-enter-duration: 400ms;
     "k M M f"
     "j i h g";
 
-  grid-template-rows: repeat(4, 25%);
+  grid-template-rows: repeat(42, 25%);
   //   grid-template-columns: 240px auto auto 240px;
   grid-template-columns: repeat(4, 25%);
+
+  @media only screen and (max-width: 768px) {
+    // margin-top: 30px;
+    width: 90%;
+    height: auto;
+    grid-template-rows: repeat(13, 10%);
+    grid-template-columns: repeat(1, 100%);
+    grid-template-areas:
+      "a"
+      "b"
+      "c"
+      "d"
+      "e"
+      "f"
+      "g"
+      "h"
+      "i"
+      "j"
+      "k"
+      "l"
+      "M";
+  }
 }
 
 .tool {
@@ -54,6 +80,9 @@ $grid-enter-duration: 400ms;
     width: 100%;
     height: 100%;
     transition: transform 200ms ease-in-out;
+    @media only screen and (max-width: 768px) {
+      height: auto;
+    }
 
     &:hover {
       transform: scale(1.1);

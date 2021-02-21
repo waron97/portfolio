@@ -30,7 +30,7 @@ function Navbar(props: Props) {
             );
           }}
         >
-          Bio
+          Chi sono
         </div>
         <div
           onClick={() => {
