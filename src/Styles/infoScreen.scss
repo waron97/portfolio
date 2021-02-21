@@ -7,12 +7,13 @@
   padding: 1rem;
   border: 5px solid white;
   border-radius: 10px;
-  z-index: 100;
+  z-index: 1000;
 
   background-color: rgb(114, 114, 114);
   color: white;
   @media only screen and (max-width: 768px) {
     width: 85vw;
+    position: fixed;
     // max-width: 95vw;
   }
 
@@ -45,6 +46,7 @@
   justify-content: center;
 
   @media only screen and (max-width: 768px) {
+    position: fixed;
     display: block;
     border-radius: 50%;
     fill: transparent;
@@ -52,6 +54,7 @@
     align-items: center;
     justify-content: center;
     top: 90%;
+    z-index: 1000;
     // background-color: white;
     svg {
       fill: white;
