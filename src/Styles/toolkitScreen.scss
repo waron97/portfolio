@@ -19,6 +19,7 @@ $grid-enter-duration: 400ms;
   @media only screen and (max-width: 768px) {
     justify-content: center;
     align-items: flex-start;
+    height: auto !important;
   }
 }
 
@@ -37,15 +38,16 @@ $grid-enter-duration: 400ms;
     "k M M f"
     "j i h g";
 
-  grid-template-rows: repeat(42, 25%);
+  grid-template-rows: repeat(4, 25%);
   //   grid-template-columns: 240px auto auto 240px;
   grid-template-columns: repeat(4, 25%);
 
   @media only screen and (max-width: 768px) {
-    // margin-top: 30px;
+    margin-top: 30px;
+    gap: 10px;
     width: 90%;
-    height: auto;
-    grid-template-rows: repeat(13, 10%);
+    height: initial;
+    grid-template-rows: repeat(13, auto);
     grid-template-columns: repeat(1, 100%);
     grid-template-areas:
       "a"
@@ -74,6 +76,9 @@ $grid-enter-duration: 400ms;
   width: 100%;
   height: 100%;
   cursor: pointer;
+  @media only screen and (max-width: 768px) {
+    height: auto;
+  }
 
   img {
     transform: scale(1);
@@ -158,6 +163,12 @@ $grid-enter-duration: 400ms;
   justify-content: space-around;
   align-items: flex-start;
   animation: color-in 1s 0s forwards ease-in-out;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+    border: 3px solid white;
+    background-color: rgba(0, 1, 53, 0.904);
+  }
 
   .line {
     position: absolute;

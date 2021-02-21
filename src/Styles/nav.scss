@@ -27,10 +27,13 @@ $nav-bar-delay: $nav-base-delay + ($nav-seq-delay * 3);
   transform: translateX(-50%);
 
   @media only screen and (max-width: 768px) {
-    background-color: rgb(65, 65, 65);
+    background-color: rgb(0, 0, 0);
     width: 100%;
-    padding-left: 5px;
-    padding-right: 5px;
+    height: 7vh;
+    font-size: 18px;
+    // height: 13%;
+    // padding-left: 5px;
+    // padding-right: 5px;
     padding-bottom: 3px;
     z-index: 500;
   }
@@ -51,11 +54,15 @@ $nav-bar-delay: $nav-base-delay + ($nav-seq-delay * 3);
     animation-duration: $nav-duration;
     animation-fill-mode: forwards;
     animation-timing-function: ease-in;
+    @media only screen and (max-width: 768px) {
+      top: 50px;
+    }
   }
 }
 
 .navbar-nav {
   width: 100%;
+
   div {
     transform: rotateX(90deg);
     cursor: pointer;
