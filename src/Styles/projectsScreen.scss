@@ -64,7 +64,7 @@ $dims: 180px;
   flex-direction: row;
   width: 100%;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
   @media only screen and (max-width: 768px) {
     flex-direction: column;
@@ -88,9 +88,9 @@ $dims: 180px;
     align-items: center;
     justify-content: center;
     margin-right: 3em;
-    $dims: 180px;
+    $dims: 13%;
     width: $dims;
-    height: $dims;
+    height: auto;
     background-color: white;
     border-radius: 50%;
     border: 5px solid orange;
